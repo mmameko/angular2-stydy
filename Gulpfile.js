@@ -38,10 +38,10 @@ gulp.task("watch", function(){
 });
 
 gulp.task("ts:compile", function(){
+    var tsProj = ts.createProject("tsconfig.json");
+
 	gulp.src(path.src.ts)
-        .pipe(ts({
-			module: "system"
-		}))
+        .pipe(tsProj())
         .pipe(gulp.dest(path.build.js))
 		.pipe(bs.reload({ stream: true }));
 });
